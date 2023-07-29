@@ -9,7 +9,6 @@ import anon from "anonfiles-api"
 import { createReadStream } from "fs"
 
 const response = anon.upload(createReadStream("fireball.mp4")); // or you can put buffers in it.
-
 ```
 
 Getting info
