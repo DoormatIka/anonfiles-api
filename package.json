@@ -1,0 +1,21 @@
+{
+  "name": "anonfiles-api",
+  "version": "1.0.0",
+  "description": "A comfortable anonfiles API wrapper.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module",
+  "types": "build/index.d.ts"
+}
