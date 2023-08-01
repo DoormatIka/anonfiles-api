@@ -1,5 +1,5 @@
 {
-  "name": "anonfiles-api",
+  "name": "comfy-anon-files",
   "version": "1.0.0",
   "description": "A comfortable anonfiles API wrapper.",
   "main": "build/index.js",
@@ -14,6 +14,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "form-data": "^4.0.0",
     "node-fetch": "^3.3.2"
   },
   "type": "module",

@@ -1,6 +1,6 @@
-import { File } from 'buffer';
 import { ReadStream } from 'fs';
-import fetch, { FormData } from 'node-fetch';
+import fetch from 'node-fetch';
+import FormData from 'form-data';
 
 export type Response = Success | Failure;
 export type Failure = {
@@ -49,12 +49,7 @@ export async function upload(
     filename: string
 ): Promise<Response> {
     const form = new FormData()
-    if (data instanceof ReadStream) {
-        form.set("file", blobToFile(await streamToBlob(data), filename));
-    }
-    if (data instanceof Buffer) {
-        form.set("file", blobToFile(new Blob([data]), filename));
-    }
+    form.append("file", data, filename)
 
     const f = await fetch('https://api.anonfiles.com/upload', {
         method: "POST",
@@ -72,19 +67,4 @@ export async function info(id: string): Promise<Response> {
 
 export function isUploadSuccess(res: Response): res is Success {
     return (res as Success).data !== undefined;
-}
-
-function streamToBlob(stream: ReadStream) {
-    return new Promise<Blob>((res, rej) => {
-        const chunks: (string | Buffer)[] = [];
-        stream
-            .on("data", chunk => chunks.push(chunk))
-            .once("end", () => {
-                res(new Blob(chunks));
-            })
-            .once("error", rej);
-    });
-}
-function blobToFile(blob: Blob, name: string) {
-    return new File([blob], name, { type: blob.type });
 }
