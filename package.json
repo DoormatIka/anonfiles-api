@@ -1,6 +1,6 @@
 {
   "name": "comfy-anon-files",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A comfortable anonfiles API wrapper.",
   "main": "build/index.js",
   "scripts": {
