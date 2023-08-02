@@ -48,7 +48,9 @@ export async function upload(
     data: ReadStream | Buffer, 
     filename: string
 ): Promise<Response> {
-    const form = new FormData()
+    const form = new FormData({ 
+        maxDataSize: Infinity 
+    });
     form.append("file", data, filename)
 
     const f = await fetch('https://api.anonfiles.com/upload', {
